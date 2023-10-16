@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="returnless" translate="label" sortOrder="315">
+            <label>Returnless</label>
+        </tab>
+        <section id="returnless_connector_v2" translate="label" type="text" sortOrder="3146" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Connector Api V2</label>
+            <tab>returnless</tab>
+            <resource>Returnless_ConnectorV2::returnless_connector_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Config</label>
+                <field id="module_version" translate="label" type="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Current Version Installed</label>
+                    <backend_model>Returnless\ConnectorV2\Model\Config\ModuleVersion</backend_model>
+                </field>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="u_upc" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>EAN attribute code</label>
+                    <comment><![CDATA[The name of the EAN attribute in your system]]></comment>
+                </field>
+                <field id="u_brand" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand attribute code</label>
+                    <comment><![CDATA[The name of the Brand attribute in your system]]></comment>
+                </field>
+            </group>
+            <group id="marketplace_orders" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Marketplace Orders</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Search for Marketplace Order</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="integration_partner" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Integration Partner</label>
+                    <source_model>Returnless\ConnectorV2\Model\Config\Source\IntegrationPartner</source_model>
+                </field>
+                <field id="search_priority" translate="label" type="select" sortOrder="30" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Search priority</label>
+                    <source_model>Returnless\ConnectorV2\Model\Config\Source\SearchPriority</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

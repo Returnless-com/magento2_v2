@@ -1,0 +1,21 @@
+{
+    "name": "returnless-com/magento2_v2",
+    "description": "Returnless Connector V2",
+    "type": "magento2-module",
+    "require": {
+        "php": "~7.0.0|7.0.2|7.0.4|~7.0.6|~7.1.0|~7.2.0|~7.3.0|~7.4.0|8.0.*|8.1.*|8.2.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Returnless\\ConnectorV2\\": ""
+        }
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "version": "0.0.1"
+}
