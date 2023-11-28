@@ -38,7 +38,7 @@ class Info extends AbstractController implements CsrfAwareActionInterface
     /**
      * private MAX_ORDER_LENGTH
      */
-    private const MAX_ORDER_LENGTH = 11;
+    private const MAX_ORDER_LENGTH = 32;
 
     /**
      * @var SearchOrder
@@ -125,7 +125,7 @@ class Info extends AbstractController implements CsrfAwareActionInterface
             throw new ValidatorException(__('Order Number Length should be less then %1.', self::MAX_ORDER_LENGTH));
         }
 
-        if (preg_match("/^[a-zA-Z0-9_-]{3,11}$/", $post->order_number) != 1) {
+        if (preg_match("/^[a-zA-Z0-9_-]{3," . self::MAX_ORDER_LENGTH . "}$/", $post->order_number) != 1) {
             throw new ValidatorException(__('Order Number format is not correct.'));
         }
 
