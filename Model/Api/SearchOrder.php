@@ -229,13 +229,14 @@ class SearchOrder implements SearchOrderInterface
         $salesOrderItem['name'] = $orderItem->getName();
         $salesOrderItem['sku'] = $orderItem->getSku();
         $salesOrderItem['quantity'] = (int) $orderItem->getQtyOrdered();
-
-        $salesOrderItem['barcode'] = $this->config->getEanAttributeCode() ?: null;
-        $salesOrderItem['item_price'] = (int) $orderItem->getPriceInclTax() * 100;
-        $salesOrderItem['item_discount'] = (int) $orderItem->getDiscountAmount() * 100;
+        $salesOrderItem['vat_rate'] = (int) $orderItem->getTaxPercent();
+        $salesOrderItem['item_price'] = $orderItem->getPrice() * 100;
+        $salesOrderItem['item_discount'] = (int) ($orderItem->getDiscountAmount() * 100);
 
         $product = $this->getProductById($orderItem->getProductId());
         if ($product) {
+            $eavAttributeCode = $this->config->getEanAttributeCode();
+            $salesOrderItem['barcode'] = $eavAttributeCode ? $product->getData($eavAttributeCode) : null;
             $salesOrderItem['model'] = $product->getColor() ?: $product->getSize();
             $salesOrderItem['item_cost'] = $product->getCost();
             $salesOrderItem['width'] = $product->getWeight();
