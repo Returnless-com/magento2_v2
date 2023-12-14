@@ -285,7 +285,7 @@ class SearchOrder implements SearchOrderInterface
      * @param $product
      * @return null|string
      */
-    public function getImageByProduct($product): string | null
+    public function getImageByProduct($product)
     {
         try {
             $image = $product->getMediaGalleryImages()->getFirstItem()->getUrl();
